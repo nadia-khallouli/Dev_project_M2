@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page de connexion</title>
+    <link rel="stylesheet" href="../css/style21.css" />
+  </head>
+  <body>
+    <div id="login-popup" class="popup">
+      <div class="popup-content">
+        <button class="but-retour"><a href="index.html">Retour</a></button>
+
+        <h2>Se connecter</h2>
+        <label for="username">Name</label>
+        <input type="text" id="username" placeholder="Enter votre nom" />
+
+        <label for="email">Email</label>
+        <input type="text" id="email" placeholder="Enter votre email" />
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter votre mot de passe"
+        />
+
+        <button id="login-button"><a href="index.html">Connection</a></button>
+
+        <p>
+          Vous n'avez pas de compte ? <a href="register.html">s'enregistrer</a>
+        </p>
+        <p id="error-message" class="error-message"></p>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/assembler.css" />
+    <link rel="stylesheet" href="../css/nav.css" />
+    <link rel="stylesheet" href="../css/Order-summary.css" />
+    <title>🥪</title>
+  </head>
+  <body>
+    <audio loop id="backgroundMusic">
+      <source src="../../images/sound/bg.mp3" type="audio/mpeg" />
+    </audio>
+    <header>
+      <div class="blanc"></div>
+      <nav class="navbar">
+        <img src="../images/logo.png" class="logo" alt="logo" />
+
+        <ul>
+          <li><a href="index.html">home</a></li>
+          <li><a href="#Commander">Commander</a></li>
+          <li>
+            <a href="login.html">se connecter</a>
+            <img src="../images/user.png" alt="users" />
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <div class="assembler-desc">
+      <h1>Assemblez puis commandez votre sandwich en 2 clics !</h1>
+      <p style="font-weight: 400; margin-top: 1rem">
+        Choisissez les ingrédients que vous voulez, personnalisez votre sandwich
+        comme bon vous semble et regardez votre sandwich prendre vie en temps
+        réel.
+      </p>
+    </div>
+    <div id="sandwich-builder">
+      <div class="menu">
+        <div class="ing-pain">
+          <p class="title">Pains</p>
+          <div
+            data-ingr="pain_complet"
+            class="clickable"
+            style="background-image: url('../images/icons/pain_complet.jpeg')"
+          ></div>
+          <div
+            data-ingr="pain_avoine"
+            class="clickable"
+            style="background-image: url('../images/icons/pain_avoine.jpeg')"
+          ></div>
+          <div
+            data-ingr="pain_blanc"
+            class="clickable"
+            style="background-image: url('../images/icons/pain_blanc.jpeg')"
+          ></div>
+          <div
+            data-ingr="pain_parmesan"
+            class="clickable"
+            style="background-image: url('../images/icons/pain_parmesan.jpeg')"
+          ></div>
+          <div
+            data-ingr="pain_italien"
+            class="clickable"
+            style="background-image: url('../images/icons/pain_italien.jpeg')"
+          ></div>
+        </div>
+        <div class="ing-viande">
+          <p class="title">Viande</p>
+          <div
+            data-ingr="steak_hache"
+            class="clickable"
+            onclick="toggleLayer('steak_hache')"
+            style="background-image: url('../images/icons/steak_hache.jpeg')"
+          ></div>
+          <div
+            data-ingr="boulette_de_viande"
+            class="clickable"
+            onclick="toggleLayer('boulette_de_viande')"
+            style="
+              background-image: url(./assets/images/boulette_de_viande.jpeg);
+            "
+          ></div>
+          <div
+            data-ingr="poulet"
+            class="clickable"
+            onclick="toggleLayer('poulet')"
+            style="background-image: url('../images/icons/poulet.jpg')"
+          ></div>
+          <div
+            data-ingr="jambon"
+            class="clickable"
+            onclick="toggleLayer('jambon')"
+            style="background-image: url('../images/icons/jambon.jpg')"
+          ></div>
+          <div
+            data-ingr="jambon_roti"
+            class="clickable"
+            onclick="toggleLayer('jambon_roti')"
+            style="background-image: url('../images/icons/jambon_roti.jpg')"
+          ></div>
+          <div
+            data-ingr="jambon_sec"
+            class="clickable"
+            onclick="toggleLayer('jambon_sec')"
+            style="background-image: url('../images/icons/jambon_sec.jpg')"
+          ></div>
+          <div
+            data-ingr="boulette_de_viande_vegan"
+            class="clickable"
+            onclick="toggleLayer('boulette_de_viande_vegan')"
+            style="
+              background-image: url('../images/icons/boulette_de_viande_vegan.jpg');
+              position: relative;
+            "
+          ></div>
+        </div>
+        <div class="ing-fromage">
+          <p class="title">Fromage</p>
+          <div
+            data-ingr="cheddar"
+            class="clickable"
+            style="background-image: url('../images/icons/fromage_cheddar.jpg')"
+          ></div>
+          <div
+            data-ingr="mozzarella"
+            class="clickable"
+            style="background-image: url('../images/icons/mozzarella.jpg')"
+          ></div>
+          <div
+            data-ingr="parmesan"
+            class="clickable"
+            style="background-image: url('../images/icons/parmesan.jpg')"
+          ></div>
+          <div
+            data-ingr="blanc"
+            class="clickable"
+            style="background-image: url('../images/icons/blanc.jpg')"
+          ></div>
+        </div>
+        <div class="ing-legumes">
+          <p class="title">Légumes</p>
+          <div
+            data-ingr="salad"
+            class="clickable"
+            style="background-image: url('../images/icons/salade.jpg')"
+          ></div>
+          <div
+            data-ingr="tomato"
+            class="clickable"
+            style="background-image: url('../images/icons/tomate.jpg')"
+          ></div>
+          <div
+            data-ingr="olive"
+            class="clickable"
+            style="background-image: url('../images/icons/olive.jpg')"
+          ></div>
+          <div
+            data-ingr="oignon"
+            class="clickable"
+            style="background-image: url('../images/icons/oignon.jpg')"
+          ></div>
+          <div
+            data-ingr="cornichon"
+            class="clickable"
+            style="background-image: url('../images/icons/cornichon.jpg')"
+          ></div>
+          <div
+            data-ingr="concombre"
+            class="clickable"
+            style="background-image: url('../images/icons/concombre.jpg')"
+          ></div>
+          <div
+            data-ingr="poivron"
+            class="clickable"
+            style="background-image: url('../images/icons/poivron.png')"
+          ></div>
+        </div>
+        <div class="ing-sauce">
+          <p class="title">Sauces</p>
+          <div
+            data-ingr="ketchup"
+            class="clickable"
+            style="background-image: url('../images/icons/ketchup.jpg')"
+          ></div>
+          <div
+            data-ingr="barbecue"
+            class="clickable"
+            style="background-image: url('../images/icons/barbecue.jpeg')"
+          ></div>
+          <div
+            data-ingr="caesar"
+            class="clickable"
+            style="background-image: url('../images/icons/caesar.jpeg')"
+          ></div>
+          <div
+            data-ingr="chipotle"
+            class="clickable"
+            style="
+              background-image: url('../images/icons/chipotle_southwest.jpg');
+            "
+          ></div>
+          <div
+            data-ingr="mayonnaise"
+            class="clickable"
+            style="background-image: url('../images/icons/mayonnaise.jpg')"
+          ></div>
+          <div
+            data-ingr="moutarde"
+            class="clickable"
+            style="background-image: url('../images/icons/moutarde.jpg')"
+          ></div>
+          <div
+            data-ingr="ranch"
+            class="clickable"
+            style="background-image: url('../images/icons/ranch.jpeg')"
+          ></div>
+          <div
+            data-ingr="sauce_oignon"
+            class="clickable"
+            style="background-image: url('../images/icons/sauce_oignon.jpg')"
+          ></div>
+        </div>
+      </div>
+      <div id="preview">
+        <div id="preview-top"></div>
+        <div id="preview-bottom"></div>
+        <img
+          alt="Ingrédient Salade"
+          data-ingr="salad"
+          src="../images/preview_salad.png"
+          style="z-index: 2"
+        />
+        <img
+          alt="Ingrédient Tomate"
+          data-ingr="tomato"
+          src="../images/preview_tomate.png"
+          style="z-index: 3"
+        />
+        <img
+          alt="Ingrédient Oignon"
+          data-ingr="oignon"
+          src="../images/preview_oignon.png"
+          style="z-index: 4"
+        />
+        <img
+          alt="Ingrédient Concombre"
+          data-ingr="concombre"
+          src="../images/preview_concombre.png"
+          style="z-index: 5"
+        />
+        <img
+          alt="Ingrédient Poivron"
+          data-ingr="poivron"
+          src="../images/preview_poivron.png"
+          style="z-index: 6"
+        />
+        <img
+          alt="Ingrédient Olive"
+          data-ingr="olive"
+          src="../images/preview_olive.png"
+          style="z-index: 7"
+        />
+        <img
+          alt="Ingrédient Steak haché"
+          data-ingr="steak_hache"
+          src="../images/preview_steak_hache.png"
+          style="top: -3%; z-index: 2"
+        />
+        <img
+          alt="Ingrédient Poulet"
+          data-ingr="poulet"
+          src="../images/preview_poulet.png"
+          style="top: -3%; z-index: 4"
+        />
+        <img
+          alt="Ingrédient Boulette de viande"
+          data-ingr="boulette_de_viande"
+          src="../images/preview_boulette_de_viande.png"
+          style="top: -3%; z-index: 3"
+        />
+        <img
+          alt="Ingrédient Jambon"
+          data-ingr="jambon"
+          src="../images/preview_jambon.png"
+          style="top: -3%; z-index: 5"
+        />
+        <img
+          alt="Ingrédient Jambon rôti"
+          data-ingr="jambon_roti"
+          src="../images/preview_jambon_roti.png"
+          style="top: -3%; z-index: 6"
+        />
+        <img
+          alt="Ingrédient Jambon sec"
+          data-ingr="jambon_sec"
+          src="../images/preview_jambon_sec.png"
+          style="top: -3%; z-index: 7"
+        />
+        <img
+          alt="Ingrédient Boulette de viande végan"
+          data-ingr="boulette_de_viande_vegan"
+          src="../images/preview_boulette_de_viande_vegan.png"
+          style="top: -3%; z-index: 8"
+        />
+        <img
+          alt="Ingrédient Cheddar"
+          data-ingr="cheddar"
+          src="../images/preview_cheddar.png"
+          style="top: -3%; z-index: 9"
+        />
+        <img
+          alt="Ingrédient Parmesan"
+          data-ingr="parmesan"
+          src="../images/preview_parmesan.png"
+          style="top: -3%; z-index: 10"
+        />
+        <img
+          alt="Ingrédient Mozzarella"
+          data-ingr="mozzarella"
+          src="../images/preview_mozzarella.png"
+          style="top: -3%; z-index: 11"
+        />
+        <img
+          alt="Ingrédient fromage américain"
+          data-ingr="blanc"
+          src="../images/preview_blanc.png"
+          style="top: -3%; z-index: 12"
+        />
+      </div>
+      <div id="ticket">
+        <div class="ticket-items">
+          <ul>
+            <li><span>0.80</span> Pain Italien</li>
+            <li><span>0.54</span> Steak haché</li>
+            <li><span>0.37</span> Cheddar</li>
+            <li><span>0.76</span> Tomates</li>
+            <li><span>0.12</span> Salade</li>
+            <li><span>0.05</span> Olives</li>
+            <li><span>0.40</span> Sauce Chipotle</li>
+          </ul>
+        </div>
+        <div class="payment">
+          <button class="payment-button">Payer avec Google Pay</button>
+          <button class="payment-button">Payer avec Apple Pay</button>
+          <button class="payment-button">Payer avec PayLib</button>
+
+          <div class="card-info">
+            <label>Payer avec Mastercard</label>
+            <input type="text" placeholder="Numéro de carte" />
+
+            <div class="card-exp-cvv">
+              <input type="text" placeholder="MM/AA" class="small-input" />
+              <input type="text" placeholder="CVV" class="small-input" />
+            </div>
+
+            <button class="confirm-button">Confirmer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-section address">
+        <p>
+          0 rue de où-vous-savez<br />17000 La Rochelle<br />+33 6 12 34 56 78
+        </p>
+      </div>
+
+      <div class="footer-section links">
+        <ul>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Jobs</a></li>
+          <li><a href="#">À propos</a></li>
+          <li><a href="#">SIRET</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Termes d'utilisation</a></li>
+          <li><a href="#">Chiffres en 2024</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section social-media">
+        <a href="#"
+          ><img src="../images/twitter-logo-24.png" alt="Twitter"
+        /></a>
+        <a href="#"
+          ><img src="../images/instagram-logo-24.png" alt="Instagram"
+        /></a>
+        <a href="#"
+          ><img src="../images/facebook-circle-logo-24.png" alt="Facebook"
+        /></a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Partenaire du Stade Rochelais depuis plus de 60 ans</p>
+      </div>
+    </footer>
+    <script>
+      const container = document.querySelectorAll(".clickable");
+      container.forEach((menu, index) => {
+        menu.onclick = function () {
+          const layer = document.querySelector(
+            "#preview img[data-ingr=" + menu.getAttribute("data-ingr") + "]"
+          );
+
+          if (!menu.classList.contains("selected") && layer) {
+            menu.classList.add("selected");
+            layer.style.display = "block";
+          } else {
+            menu.classList.remove("selected");
+            layer.style.display = "none";
+          }
+        };
+      });
+    </script>
+    <script>
+      const bgMusic = document.getElementById("backgroundMusic");
+
+      document.addEventListener("mouseover", function PlayAudio() {
+        bgMusic.volume = 0.05;
+        bgMusic.play();
+        document.removeEventListener("mouseover", PlayAudio);
+      });
+    </script>
+  </body>
+</html>
