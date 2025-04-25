@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page de connexion</title>
+    <link rel="stylesheet" href="../css/style22.css" />
+  </head>
+  <body>
+    <div id="login-popup" class="popup">
+      <div class="popup-content">
+        <h2>S'enregistrer</h2>
+        <label for="username">Nom</label>
+        <input
+          type="text"
+          id="username"
+          placeholder="Enter vote nom"
+          required
+        />
+
+        <label for="email">Email</label>
+        <input
+          type="text"
+          id="email"
+          placeholder="Enter votre email"
+          required
+        />
+
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter votre mot de passe"
+          required
+        />
+
+        <label for="confirm-password">Confirmer le mot de passe</label>
+        <input
+          type="password"
+          id="confirm-password"
+          placeholder="Confirmez votre mot de passe"
+          required
+        />
+
+        <label for="dob">Date de naissance</label>
+        <input id="date" type="date" required />
+
+        <label for="gender">Genre</label>
+        <select id="gender">
+          <option value="">Sélectionnez votre genre</option>
+          <option value="male">Homme</option>
+          <option value="female">Femme</option>
+          <option value="other">Autre</option>
+        </select>
+        <button id="login-button"><a href="login.html">Connection</a></button>
+        <p>Avez-vous un compte ? <a href="login.html">Connection</a></p>
+        <p id="error-message" class="error-message"></p>
+      </div>
+    </div>
+  </body>
+</html>
